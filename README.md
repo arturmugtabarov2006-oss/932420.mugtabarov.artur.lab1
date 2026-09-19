@@ -9,5 +9,5 @@
 Файлы
 - "index.html"
 - "icon.png"
-- "read.me"
+- "README.md"
 
