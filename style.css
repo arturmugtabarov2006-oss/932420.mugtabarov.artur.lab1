@@ -29,3 +29,75 @@ main {
     padding: 0 20px;
     position: relative;
 }
+
+.projects-section {
+    position: relative;
+    margin-top: 30px;
+    clear: both;
+}
+
+.projects-list li{
+    position: relative;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.badge {
+    position: absolute;
+    top: -5;
+    left: 150px;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+a{
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:visited{
+    color: rgb(100, 100, 0)
+}
+
+a:focus {
+    outline: 3px solid var(--primary-color);
+}
+
+a:hover{
+    color: var(--primary-color);
+}
+
+.social-icons-container{
+    position: relative;
+}
+
+.social-icon{
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+
+     width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover{
+    transform: scale(1.2) rotate(5deg);
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.social-icon:active{
+    transform:scale(0,9) rotate(0deg);
+}
