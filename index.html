@@ -4,11 +4,16 @@
         <meta charset = "utf-8">
         <title> Мугтабаров Артур </title>
         <style>
-        body{
-            background-color: rgb(25, 25, 25);
-            color: rgb(95, 205, 95)
+        .skills-list {
+            list-style: none;
+            padding-left: 0;
+            margin-left: 20px;
         }
-        h2,h3 {color: rgb(5, 100, 5)} 
+        .skills-lost li {
+            margin-bottom: 10px;
+            font-size: 15px;
+            font-weight: bold;
+        }
     </style>
     </head>
    
@@ -16,7 +21,7 @@
 
         <header>
         <h1> Мугтабаров Артур </h1>
-         <img src="Icon.png" alt="Avatar" width="200" height="200"/>
+         <img src="Icon.png" alt="Avatar" width="200" height="200" style="border-radius: 50%;"/>
         <p> Тема: "Спорт и активность" </p>
         </header>
 
@@ -32,7 +37,7 @@
 
             <section>
                 <h2> Навыки </h2>
-                <ul> 
+                <ul class="skills-list"> 
                     <li> Бег </li>
                     <li> Отжимания </li>
                     <li> Подтягивания </li>
@@ -40,9 +45,9 @@
                 </ul>
             </section>
 
-            <section>
+            <section class="projects-section">
                 <h2> Проекты (Соревнования) </h2>
-                <ol> 
+                <ol class="project-list"> 
                     <li> Велопробег </li>
                     <li> Турнир по шахматам </li>
                     <li> ГТО </li>
@@ -76,6 +81,12 @@
            
             <p> &copy; Copyright 2026 Артур Мугтабаров</p>
         </footer>
+
+        <div class="social-icons-container">
+        <a href="#" class="social-icon" title="Telegram">✈️</a>
+        <a href="#" class="social-icon" title="VK">🌐</a>
+        <a href="#" class="social-icon" title="YouTube">▶️</a>
+        </div>
 
     </body>
 </html>
