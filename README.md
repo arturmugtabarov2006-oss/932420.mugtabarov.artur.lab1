@@ -10,4 +10,4 @@
 - "index.html"
 - "icon.png"
 - "README.md"
-
+- "style.css"

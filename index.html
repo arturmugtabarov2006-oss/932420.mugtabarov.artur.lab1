@@ -3,7 +3,7 @@
     <head>
         <meta charset = "utf-8">
         <title> Мугтабаров Артур </title>
-        <link rel="styleshett" href="style.css">
+        <link rel="stylesheet" href="style.css">
         <style>
         .skills-list {
             list-style: none;
@@ -14,6 +14,11 @@
             margin-bottom: 10px;
             font-size: 15px;
             font-weight: bold;
+        }
+        .skills-list li::before{
+            content: "🏃";
+            margin-right: 10px;
+            color: var(--primary-color);
         }
     </style>
     </head>
@@ -48,7 +53,7 @@
 
             <section class="projects-section">
                 <h2> Проекты (Соревнования) </h2>
-                <ol class="project-list"> 
+                <ol class="projects-list"> 
                     <li> Велопробег </li>
                     <li> Турнир по шахматам <span class ="badge"> Top skill </span></li>
                     <li> ГТО </li>
@@ -65,7 +70,7 @@
                     <input type="email" id="email" name="email" placeholder="your@email.com" required>
                 
                     <label for="message">Сообщение:</label>
-                    <textarea id="message" name="message" placeholder="Напишите мне..." rows="1" required></textarea>
+                    <textarea id="message" name="message" placeholder="Напишите мне..." rows="4" required></textarea>
                 
                     <button type="submit">Отправить</button>
                 </form>

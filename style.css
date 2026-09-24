@@ -35,7 +35,9 @@ main {
     margin-top: 30px;
     clear: both;
 }
-
+.projects-list{
+    padding-left: 20px;
+}
 .projects-list li{
     position: relative;
     margin-bottom: 10px;
@@ -44,12 +46,21 @@ main {
 
 .badge {
     position: absolute;
-    top: -5;
-    left: 150px;
+    top: -5px;
+    right: 0;
     background-color: var(--accent-color);
     color: var(--primary-color);
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 10px;
 }
 
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    gap: 15px;
+}
 a{
     color: var(--accent-color);
     text-decoration: none;
@@ -91,6 +102,8 @@ a:hover{
     
     transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
+.social-icon:nth-child(2) {bottom: 100px;}
+.social-icon:nth-child(3) {bottom: 170px;}
 
 .social-icon:hover{
     transform: scale(1.2) rotate(5deg);
@@ -99,5 +112,5 @@ a:hover{
 }
 
 .social-icon:active{
-    transform:scale(0,9) rotate(0deg);
+    transform:scale(0.9) rotate(0deg);
 }
