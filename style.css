@@ -75,6 +75,10 @@ a:focus {
     outline: 3px solid var(--primary-color);
 }
 
+a:active {
+    color: rgb(100, 100, 0)
+}
+
 a:hover{
     color: var(--primary-color);
 }
@@ -113,4 +117,22 @@ a:hover{
 
 .social-icon:active{
     transform:scale(0.9) rotate(0deg);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+}
+
+button:hover{
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+button:focus{
+    outline: 3px solid var(--accent-color);
+}
+
+button:active{
+    transform: scale(0.95);
 }
