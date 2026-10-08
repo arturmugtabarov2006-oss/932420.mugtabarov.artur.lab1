@@ -60,6 +60,7 @@ form{
     flex-direction: column;
     max-width: 400px;
     gap: 15px;
+    position: static;
 }
 a{
     color: var(--accent-color);
