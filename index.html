@@ -29,6 +29,14 @@
         <h1> Мугтабаров Артур </h1>
          <img src="Icon.png" alt="Avatar" width="200" height="200" style="border-radius: 50%;"/>
         <p> Тема: "Спорт и активность" </p>
+
+            <nav class="main-nav">
+                <a href="#skills"> Навыки</a>
+                <a href="#projects"> Проекты</a>
+                <a href="#achievements"> Достижения</a>
+                <a href="#awards"> Награды</a>
+                <a href="#contact"> Обратная связь</a>
+            </nav>
         </header>
 
         <main>
@@ -41,7 +49,7 @@
                  игравшие зачастую на денежную ставку.</p>
             </aside>
 
-            <section>
+            <section id="skills" class="skills">
                 <h2> Навыки </h2>
                 <ul class="skills-list"> 
                     <li> Бег </li>
@@ -51,7 +59,7 @@
                 </ul>
             </section>
 
-            <section class="projects-section">
+            <section id="projects" class="projects-section">
                 <h2> Проекты (Соревнования) </h2>
                 <ol class="projects-list"> 
                     <li> Велопробег </li>
@@ -60,8 +68,46 @@
                 </ol>
             </section>
 
-            <section>
+            
+
+                <section id="achievements" class="achievements">
+                     
+                    <h2>Достижения</h2>
+                    <div class="achievements-row">
+
+                    <article class="achievement-card">
+                    <h3>Городской марафон</h3>
+                    <span class="medal">🥇</span>
+                    <time datetime="2026-09-12">12 сентября 2026</time>
+                    <p>1 место в категории зритель </p>
+                    </article>   
+
+                    <article class="achievement-card">
+                        <h3>Личный рекорд</h3>
+                        <span class="medal">🏆</span>
+                        <time datetime="2026-10-08">8 Октября 2026</time>    
+                        <p>До остановки за 2 минуты</p>
+                    </article>  
+
+                    <article class="achievement-card">
+                        <h3>Марафон</h3>
+                        <span class="medal">🎖️</span>
+                        <time datetime="2026-09-10">10 сентября 2026</time>
+                        <p>Участие в прогулке(СМГ)</p>
+                    </article>
+
+            <section id="awards" class="avards">
+                <h2>Награды и сертификаты</h2>
+
+                <div class="awards-grid">
+                    
+                </div>
+            </section>
+            
+
+            <section id="contact" class="contact">
                 <h2>Обратная связь</h2>
+                
                 <form action="#" method="post">
                     <label for="name">Имя:</label>
                     <input type="text" id="name" name="name" placeholder="Ваше имя" required>
@@ -74,8 +120,9 @@
                 
                     <button type="submit">Отправить</button>
                 </form>
-            </section>
-
+            </section> 
+                     </div>
+                </section>
         </main>
        
 
