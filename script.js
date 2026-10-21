@@ -17,6 +17,7 @@ const userName = prompt("Пожалуйста, введите ваше имя:")
 const totalWeight = calculateTotalWeight(packagesWeight);
 const heavyPackages = filterHeavyPackages(packagesWeight);
 const heavyWeight = calculateTotalWeight(heavyPackages);
+const heaviest = findHeaviestPackage(packagesWeight);
 
 let lightCount = 0;
 for (let i = 0; i < packagesWeight.length; i++) {
@@ -28,12 +29,13 @@ for (let i = 0; i < packagesWeight.length; i++) {
 const lightPercentage = (lightCount / packagesWeight.length) * 100;
 
 
-alert(`Привет, ${userName}! Общий вес груза – 
-    ${totalWeight.toFixed(1)} кг, из них 
-    ${heavyWeight.toFixed(1)} кг – тяжёлые посылки.`);
+alert(`Привет, ${userName}! 
+    Общий вес груза – ${totalWeight.toFixed(1)} кг, 
+    из них ${heavyWeight.toFixed(1)} кг – тяжёлые посылки.`);
 
-console.log(`Доля лёгких посылок: ${lightPercentage.toFixed(1)}%`);
 console.log(`Количество лёгких посылок: ${lightCount} шт.`);
+console.log(`Доля лёгких посылок: ${lightPercentage.toFixed(1)}%`);
+console.log(`Вес самой тяжёлой посылки: ${heaviest.toFixed(1)} кг.`);
 
 if (totalWeight > 50) {
     console.log("Требуется помощь второго курьера");
