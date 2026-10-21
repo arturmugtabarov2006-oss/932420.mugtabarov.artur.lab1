@@ -6,6 +6,10 @@
     --font-main: 'Arial', sans-serif;
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: var(--font-main);
     color: var(--text-color);
@@ -62,6 +66,21 @@ form{
     gap: 15px;
     position: static;
 }
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+input:focus, textarea:focus {
+    outline: 3px solid var(--primary-color);
+    border-color: var(--accent-color);
+}
+
 a{
     color: var(--accent-color);
     text-decoration: none;
@@ -81,20 +100,19 @@ a:active {
 }
 
 a:hover{
-    color: var(--primary-color);
+    color: rgb(0, 100, 0);
 }
 
 .social-icons-container{
-    position: relative;
+     display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
 }
 
 .social-icon{
-    position: fixed;
-    right: 30px;
-    bottom: 30px;
-
-     width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background-color: var(--primary-color);
     color: var(--accent-color);
     border-radius: 50%;
@@ -102,8 +120,6 @@ a:hover{
     justify-content: center;
     align-items: center;
     font-size: 24px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
     
     transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
@@ -224,9 +240,20 @@ img {
     height: auto;
 }
 
+aside {
+    float: right;
+    width: 400px;
+    margin-left: 20px;
+}
+
 @media (max-width: 768px) {
     .achievement-card {
         flex: 0 0 calc((100% - 20px) / 2);
+    }
+    aside {
+        float: none;
+        width: 100%;
+        margin-left: 0;
     }
 
     .awards-grid {
@@ -246,10 +273,7 @@ img {
     .award-item img {
         height: auto;
     }
-     aside {
-        float: none !important;
-        width: auto !important;
-    }
+
 }
 
 
