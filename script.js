@@ -12,7 +12,7 @@ function calculateTotalWeight(arr) {
     return arr.reduce((sum, weight) => sum + weight, 0);
 }
 
-const userName = prompt("Пожалуйста, введите ваше имя:");
+const userName = promt("Пожалуйста, введите ваше имя:");
 
 const totalWeight = calculateTotalWeight(packagesWeight);
 const heavyPackages = filterHeavyPackages(packagesWeight);
