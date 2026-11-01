@@ -12,21 +12,25 @@ function calculateTotalWeight(arr) {
     return arr.reduce((sum, weight) => sum + weight, 0);
 }
 
-const userName = prompt("Пожалуйста, введите ваше имя:");
+const userName = prompt("Пожалуйста, введите ваше имя:") ?? "Гость";
 
 const totalWeight = calculateTotalWeight(packagesWeight);
 const heavyPackages = filterHeavyPackages(packagesWeight);
 const heavyWeight = calculateTotalWeight(heavyPackages);
 const heaviest = findHeaviestPackage(packagesWeight);
 
-let lightCount = 0;
-for (let i = 0; i < packagesWeight.length; i++) {
-    if (packagesWeight[i] <= 2) {
-        lightCount++;
+function countlightPackage(arr) {
+    let lightCount = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] <= 2) {
+            lightCount++;
+        }
     }
+    const percentage = (count / arr.length) * 100;
+    return { count, percentage };
 }
 
-const lightPercentage = (lightCount / packagesWeight.length) * 100;
+const { count: lightCount, percentage: lightPercentage } = countLightPackages(packagesWeight);
 
 
 alert(`Привет, ${userName}! 
