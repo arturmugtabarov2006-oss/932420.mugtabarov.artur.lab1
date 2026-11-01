@@ -168,7 +168,7 @@ button:active{
 }
 
 .main-nav a:hover {
-    color: rgb(255,255,255); 
+    color: var(--accent-color);
     text-decoration: underline;
 }
 
