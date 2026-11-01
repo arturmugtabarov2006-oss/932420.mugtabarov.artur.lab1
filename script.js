@@ -12,6 +12,18 @@ function calculateTotalWeight(arr) {
     return arr.reduce((sum, weight) => sum + weight, 0);
 }
 
+
+function countLightPackages(arr) {
+    let lightCount = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] <= 2) {
+            lightCount++;
+        }
+    }
+    const percentage = (lightCount / arr.length) * 100;
+    return { count: lightCount, percentage };
+}
+
 const userName = prompt("Пожалуйста, введите ваше имя:") ?? "Гость";
 
 const totalWeight = calculateTotalWeight(packagesWeight);
@@ -19,23 +31,10 @@ const heavyPackages = filterHeavyPackages(packagesWeight);
 const heavyWeight = calculateTotalWeight(heavyPackages);
 const heaviest = findHeaviestPackage(packagesWeight);
 
-function countlightPackages(arr) {
-    let lightCount = 0;
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] <= 2) {
-            lightCount++;
-        }
-    }
-    const percentage = (count / arr.length) * 100;
-    return { count, percentage };
-}
-
 const { count: lightCount, percentage: lightPercentage } = countLightPackages(packagesWeight);
 
 
-alert(`Привет, ${userName}! 
-    Общий вес груза – ${totalWeight.toFixed(1)} кг, 
-    из них ${heavyWeight.toFixed(1)} кг – тяжёлые посылки.`);
+alert(`Привет, ${userName}! Общий вес груза – ${totalWeight.toFixed(1)} кг, из них ${heavyWeight.toFixed(1)} кг – тяжёлые посылки.`);
 
 console.log(`Количество лёгких посылок: ${lightCount} шт.`);
 console.log(`Доля лёгких посылок: ${lightPercentage.toFixed(1)}%`);
