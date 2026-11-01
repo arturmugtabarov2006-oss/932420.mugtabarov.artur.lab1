@@ -19,7 +19,7 @@ const heavyPackages = filterHeavyPackages(packagesWeight);
 const heavyWeight = calculateTotalWeight(heavyPackages);
 const heaviest = findHeaviestPackage(packagesWeight);
 
-function countlightPackage(arr) {
+function countlightPackages(arr) {
     let lightCount = 0;
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] <= 2) {
