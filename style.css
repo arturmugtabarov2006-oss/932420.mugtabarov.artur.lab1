@@ -275,4 +275,42 @@ aside {
 
 }
 
+/* Стили для карточек */
 
+.achievement-card {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background: rgb(255,255,255);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.achievement-card time {
+  display: block;
+  color: rgb(150,150,150);
+  margin: 5px 0;
+}
+
+/* Анимация исчезновения */
+.achievement-card.fade-out {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+
+/* Скрыть контейнер */
+
+.achievements-container.collapsed {
+  display: none;
+}
+
+/* Темная тема */
+body.theme-dark {
+  --bg-color: rgb(25,25,25);
+  --text-color: rgb(255,255,255);
+}
+
+body.theme-dark .achievement-card {
+  background: rgb(75,75,75);
+  border-color: rgb(125,125,125);;
+}
