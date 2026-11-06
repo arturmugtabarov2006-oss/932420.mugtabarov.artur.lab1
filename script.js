@@ -1,141 +1,139 @@
-// Поиск элементов 
-const container = document.getElementById('achievements-container');
-const addBtn = document.getElementById('add-achievement-btn');
-const hideBtn = document.getElementById('hide-achievements-btn');
-const themeBtn = document.getElementById('theme-toggle-btn');
+document.addEventListener('DOMContentLoaded', () => {
 
-// Проверка существования ключевых элементов
-if (!container || !addBtn || !hideBtn || !themeBtn) {
-  console.error('Ошибка: не найдены необходимые элементы на странице.');
-} else {
-  loadState();
+  const container = document.getElementById('achievements-container');
+  const addBtn = document.getElementById('add-achievements-btn');
+  const hideBtn = document.getElementById('hide-achievements-btn');
+  const themeBtn = document.getElementById('theme-toggle-btn');
 
-  // Обработчики событий 
-  addBtn.addEventListener('click', addAchievement);
-  hideBtn.addEventListener('click', toggleVisibility);
-  themeBtn.addEventListener('click', toggleTheme);
-}
-
-// Функция добавления достижения
-function addAchievement() {
-  const name = prompt('Введите название достижения:');
-  if (!name) return; // Если пользователь отменил ввод
-
-  const date = prompt('Введите дату (например, 2026-11-06):');
-  if (!date) return;
-
-  // Создание карточки 
-  const card = document.createElement('div');
-  card.className = 'achievement-card';
-
-  const title = document.createElement('h3');
-  title.textContent = name;
-
-  const time = document.createElement('time');
-  time.setAttribute('datetime', date);
-  time.textContent = date;
-
-  const deleteBtn = document.createElement('button');
-  deleteBtn.textContent = 'Удалить';
-  deleteBtn.className = 'delete-btn';
-  
-  // Обработчик удаления с анимацией
-  deleteBtn.addEventListener('click', function() {
-    card.classList.add('fade-out');
-    card.addEventListener('transitionend', () => {
-      card.remove();
-      saveState(); // Сохраняем после удаления
-    });
-  });
-
-  card.appendChild(title);
-  card.appendChild(time);
-  card.appendChild(deleteBtn);
-
-  container.appendChild(card);
-  saveState(); // Сохраняем после добавления
-}
-
-// Функция скрытия/показа
-function toggleVisibility() {
-  if (!container) {
-    console.error('Контейнер достижений не найден');
+  if (!container || !addBtn || !hideBtn || !themeBtn) {
+    console.error('Ошибка: не найдены необходимые элементы на странице.');
     return;
   }
-  container.classList.toggle('collapsed');
-}
 
-//  Функция переключения темы
-function toggleTheme() {
-  document.body.classList.toggle('theme-dark');
-  const isDark = document.body.classList.contains('theme-dark');
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
-}
+  function setupDeleteButton(button) {
+    button.addEventListener('click', function() {
 
-// Сохранение состояния (карточки) 
-function saveState() {
-  const cards = container.querySelectorAll('.achievement-card');
-  const data = [];
-  cards.forEach(card => {
-    data.push({
-      name: card.querySelector('h3').textContent,
-      date: card.querySelector('time').getAttribute('datetime'),
-      displayDate: card.querySelector('time').textContent
+      const card = button.closest('.achievements-card');
+      if (card) {
+        card.classList.add('fade-out');
+
+        card.addEventListener('transitionend', function handler() {
+          card.removeEventListener('transitionend', handler); 
+          card.remove();
+          saveState(); 
+        });
+      }
     });
-  });
-  localStorage.setItem('achievements', JSON.stringify(data));
-}
-
-// Загрузка состояния при старте 
-function loadState() {
-  // Восстановление темы
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
-    document.body.classList.add('theme-dark');
   }
 
-  // Восстановление карточек
-  const savedData = localStorage.getItem('achievements');
-  if (savedData) {
-    try {
-      const data = JSON.parse(savedData);
-      // Очищаем контейнер (если там уже есть статические карточки)
-      container.innerHTML = '';
-      
-      data.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'achievement-card';
 
-        const title = document.createElement('h3');
-        title.textContent = item.name;
+  function renderCard(name, dateAttr, dateText, icon = '🏅') {
+    const article = document.createElement('article');
+    article.className = 'achievements-card';
 
-        const time = document.createElement('time');
-        time.setAttribute('datetime', item.date);
-        time.textContent = item.displayDate;
+    const title = document.createElement('h3');
+    title.textContent = name;
 
-        const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = 'Удалить';
-        deleteBtn.className = 'delete-btn';
-        deleteBtn.addEventListener('click', function() {
-          card.classList.add('fade-out');
-          card.addEventListener('transitionend', () => {
-            card.remove();
-            saveState();
-          });
+    const medal = document.createElement('span');
+    medal.className = 'medal';
+    medal.textContent = icon;
+
+    const time = document.createElement('time');
+    time.setAttribute('datetime', dateAttr);
+    time.textContent = dateText;
+
+    const p = document.createElement('p');
+    p.textContent = 'Новое достижение'; 
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.textContent = 'Удалить';
+    setupDeleteButton(deleteBtn);
+
+    article.appendChild(title);
+    article.appendChild(medal);
+    article.appendChild(time);
+    article.appendChild(p);
+    article.appendChild(deleteBtn);
+
+    container.appendChild(article);
+  }
+
+  function saveState() {
+    const cards = container.querySelectorAll('.achievements-card');
+    const data = [];
+    cards.forEach(card => {
+      const h3 = card.querySelector('h3');
+      const time = card.querySelector('time');
+      const medal = card.querySelector('.medal');
+      const p = card.querySelector('p');
+
+      if (h3 && time) {
+        data.push({
+          name: h3.textContent,
+          date: time.getAttribute('datetime'),
+          displayDate: time.textContent,
+          icon: medal ? medal.textContent : '🏅',
+          desc: p ? p.textContent : ''
         });
+      }
+    });
+    localStorage.setItem('achievements', JSON.stringify(data));
+  }
 
-        card.appendChild(title);
-        card.appendChild(time);
-        card.appendChild(deleteBtn);
-        container.appendChild(card);
+  function loadState() {
+    // Тема
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('theme-dark');
+    }
+
+    // Карточки
+    const savedData = localStorage.getItem('achievements');
+    if (savedData) {
+      try {
+        const data = JSON.parse(savedData);
+        container.innerHTML = ''; 
+        
+        data.forEach(item => {
+          renderCard(item.name, item.date, item.displayDate, item.icon);
+        });
+      } catch (e) {
+        console.error('Ошибка при загрузке данных из localStorage:', e);
+      }
+    } else {
+     
+      const existingCards = container.querySelectorAll('.achievements-card');
+      existingCards.forEach(card => {
+        const deleteBtn = card.querySelector('.delete-btn');
+        if (deleteBtn) setupDeleteButton(deleteBtn);
       });
-    } catch (e) {
-      console.error('Ошибка при загрузке данных из localStorage:', e);
+      saveState(); 
     }
   }
-}
 
-// глобальная проверка ошибок
-if (!container) {
-  console.error('Элемент не найден: #achievements-container');
-}
+ 
+  addBtn.addEventListener('click', () => {
+    const name = prompt('Введите название достижения:');
+    if (!name) return;
+
+    const date = prompt('Введите дату (например, 2026-11-06):');
+    if (!date) return;
+
+    renderCard(name, date, date);
+    saveState();
+  });
+
+  hideBtn.addEventListener('click', () => {
+    container.classList.toggle('collapsed');
+  });
+
+  themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('theme-dark');
+    const isDark = document.body.classList.contains('theme-dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+
+  // Запуск при старте
+  loadState();
+});
