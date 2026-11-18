@@ -11,8 +11,7 @@ const ASSETS = [
   '/Picture/Medal.png',
   '/Picture/Certificate.png',
   '/Picture/Cup.png',
-  '/Picture/icon-192.png',
-  '/Picture/icon-512.png'
+  '/Picture/icon.png',
 ];
 
 // Установка: кладём статику в кеш
