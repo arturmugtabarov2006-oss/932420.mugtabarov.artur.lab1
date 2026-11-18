@@ -137,3 +137,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Запуск при старте
   loadState();
 });
+
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('/service-worker.js')
+      .then((reg) => console.log('SW зарегистрирован, scope:', reg.scope))
+      .catch((err) => console.error('SW ошибка:', err));
+  });
+}
